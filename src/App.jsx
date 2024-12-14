@@ -10,7 +10,6 @@ function App() {
   function addTask(formData) {
     const task = formData.get("task");
     const priority = formData.get("choice");
-    // setTasks((prev) => [...prev, taskInfo]);
     console.log(task);
     console.log(priority);
   }
