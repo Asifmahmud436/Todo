@@ -61,12 +61,7 @@ function App() {
     const inputSearch = tasks.filter((task) => task.work.toLowerCase().includes(value.toLowerCase()))
     setSearchedTask(inputSearch)
   }
-  
-  
-  
-  
-  
-  
+
   function clearSearch(){
     setSearchedTask([])
   }
@@ -74,15 +69,20 @@ function App() {
   
   return (
     <>
+      <div className="header">
+        <h1>Hello Soldier! </h1>
+        <h3>Manage your daily Tasks</h3>
+      </div>
       <form action={addTask}>
         <label htmlFor="text">Task: </label>
-        <input
+        {/* <input
           id="task"
           type="text"
           name="task"
           placeholder="Add a task for your day"
           defaultValue="Game"
-        />
+        /> */}
+        <textarea name="task" id="task" defaultValue='Game'></textarea>
         <br />
 
         <label>

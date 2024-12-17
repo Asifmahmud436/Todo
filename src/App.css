@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+body{
+  font-family: "Lato", serif;
+  background-color: black;
+  color: white;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
 .task {
   max-width: 400px;
   max-height: 400px;
@@ -16,4 +25,25 @@
 }
 .task-done{
   text-decoration: line-through;
+}
+form{
+  font-family: "Lato", serif;
+}
+input{
+  font-family: "Lato", serif;
+}
+button{
+  font-family: "Lato", serif;
+}
+
+.header{
+  max-width: 1044px;
+  padding-left: 40px;
+  margin: 0 auto;
+  margin-bottom: 130px;
+  
+}
+.header h1{
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
