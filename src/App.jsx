@@ -9,13 +9,27 @@ function App() {
   function addTask(formData) {
     let task = formData.get("task");
     let priority = formData.get("choice");
-    setTasks((prev) => [...prev, { work: task, priority: priority }]);
+    let newTask = {
+      id: nanoid(),
+      work: task,
+      priority: priority,
+    };
+    setTasks((prev) => [...prev, newTask]);
+  }
+
+  function deleteTask(id) {
+    setTasks((prev) => prev.filter((item) => item.id != id));
   }
 
   const taskList = tasks.map((task) => (
-    <Task key={nanoid()} work={task.work} priority={task.priority} />
+    <Task
+      key={task.id}
+      work={task.work}
+      priority={task.priority}
+      delete={() => deleteTask(task.id)}
+    />
   ));
-  console.log("tasklist: ", taskList);
+
   return (
     <>
       {/* Form to create a task */}
@@ -26,7 +40,7 @@ function App() {
           type="text"
           name="task"
           placeholder="Add a task for your day"
-          defaultValue="Prayer"
+          defaultValue="Game"
         />
         <br />
 
@@ -39,7 +53,7 @@ function App() {
         <br />
         <button>Submit</button>
       </form>
-      <div>{taskList}</div>
+      <div className="task-container">{taskList}</div>
     </>
   );
 }
