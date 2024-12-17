@@ -1,6 +1,6 @@
 export default function Task(props){
     return(
-        <div>
+        <div className="task">
             <p>{props.work}</p>
             <p>{props.priority}</p>
         </div>
