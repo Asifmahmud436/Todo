@@ -1,25 +1,20 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import { nanoid } from "nanoid";
+import Task from "./Task";
 
 function App() {
   const [tasks, setTasks] = useState([]);
 
   function addTask(formData) {
-    const task = formData.get("task");
-    const priority = formData.get("choice");
+    let task = formData.get("task");
+    let priority = formData.get("choice");
     setTasks((prev) => [...prev, { work: task, priority: priority }]);
-    console.log("tasks: ", tasks);
   }
 
-  const taskList = tasks.map((task) => {
-    <div>
-      <p>{task.work}</p>
-      <p>{task.priority}</p>
-    </div>;
-  });
+  const taskList = tasks.map((task) => (
+    <Task key={nanoid()} work={task.work} priority={task.priority} />
+  ));
   console.log("tasklist: ", taskList);
   return (
     <>
