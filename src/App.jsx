@@ -5,6 +5,7 @@ import Task from "./Task";
 
 function App() {
   const [tasks, setTasks] = useState([]);
+  const [searchedTask,setSearchedTask] = useState([])
 
   function addTask(formData) {
     let task = formData.get("task");
@@ -16,6 +17,7 @@ function App() {
       isComplete: false,
     };
     setTasks((prev) => [...prev, newTask]);
+    setSearchedTask([])
   }
 
   function deleteTask(id) {
@@ -46,9 +48,32 @@ function App() {
     />
   ));
 
+  const searchedTaskList = searchedTask.map((task) => (
+    <div key={nanoid()}>
+      <p>{task.work}</p>
+      <p>{task.priority}</p>
+    </div>
+  ));
+  
+
+  function handleSearch(event){
+    const {value} = event.currentTarget;
+    const inputSearch = tasks.filter((task) => task.work.toLowerCase().includes(value.toLowerCase()))
+    setSearchedTask(inputSearch)
+  }
+  
+  
+  
+  
+  
+  
+  function clearSearch(){
+    setSearchedTask([])
+  }
+
+  
   return (
     <>
-      
       <form action={addTask}>
         <label htmlFor="text">Task: </label>
         <input
@@ -69,8 +94,23 @@ function App() {
         <br />
         <button>Submit</button>
       </form>
-      <button onClick={sortTask}>Sort</button>
-      <div className="task-container">{taskList}</div>
+      
+      <label>
+        Search: 
+        <input
+          type='text'
+          name='searchBar'
+          onChange={handleSearch}
+        />
+      </label>
+      <br/>
+      <button onClick={sortTask}>Sort by importance</button>
+      {searchedTaskList.length > 0 && <button onClick={clearSearch}>Clear Search</button>}
+      
+      {searchedTaskList.length > 0 ?
+        <div className="task-container">{searchedTaskList}</div> :
+        <div className="task-container">{taskList}</div> 
+      }
     </>
   );
 }
