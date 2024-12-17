@@ -13,7 +13,7 @@ function App() {
       id: nanoid(),
       work: task,
       priority: priority,
-      isComplete: false
+      isComplete: false,
     };
     setTasks((prev) => [...prev, newTask]);
   }
@@ -22,8 +22,17 @@ function App() {
     setTasks((prev) => prev.filter((item) => item.id != id));
   }
 
-  function markComplete(id){
-    setTasks((prev) => prev.map((item) => item.id==id? {...item,isComplete: !item.isComplete} : item))
+  function markComplete(id) {
+    setTasks((prev) =>
+      prev.map((item) =>
+        item.id == id ? { ...item, isComplete: !item.isComplete } : item
+      )
+    );
+  }
+
+  const sortTask =() => {
+    const newTask = [...tasks].sort((a,b) => a.priority.localeCompare(b.priority))
+    setTasks(newTask)
   }
 
   const taskList = tasks.map((task) => (
@@ -39,7 +48,7 @@ function App() {
 
   return (
     <>
-      {/* Form to create a task */}
+      
       <form action={addTask}>
         <label htmlFor="text">Task: </label>
         <input
@@ -60,6 +69,7 @@ function App() {
         <br />
         <button>Submit</button>
       </form>
+      <button onClick={sortTask}>Sort</button>
       <div className="task-container">{taskList}</div>
     </>
   );
