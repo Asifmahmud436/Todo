@@ -70,11 +70,11 @@ function App() {
   return (
     <>
       <div className="header">
-        <h1>Hello Soldier! </h1>
+        <h1>Hello, Soldier! </h1>
         <h3>Manage your daily Tasks</h3>
       </div>
       <form action={addTask}>
-        <label htmlFor="text">Task: </label>
+        <label htmlFor="text"> </label>
         {/* <input
           id="task"
           type="text"
@@ -82,17 +82,19 @@ function App() {
           placeholder="Add a task for your day"
           defaultValue="Game"
         /> */}
-        <textarea name="task" id="task" defaultValue='Game'></textarea>
+        <textarea name="task" id="task" defaultValue='Game' rows='5' cols='54'></textarea>
         <br />
-
-        <label>
-          <input type="radio" name="choice" value="important" /> Important
-        </label>
-        <label>
-          <input type="radio" name="choice" value="later" /> Later
-        </label>
+        
+        <input type="radio" name="choice" value="important" />
+        <label className="radio-btn">
+           Important
+        </label >
+        <input type="radio" name="choice" value="later" />
+        <label className="radio-btn" htmlFor="later" id="later">Later</label>
+        
+        
         <br />
-        <button>Submit</button>
+        <button>Add</button>
       </form>
       
       <label>
