@@ -1,9 +1,10 @@
 export default function Task(props){
     return(
         <div className="task">
-            <p>{props.work}</p>
+            <p className={props.isComplete ? 'task-done':''}>{props.work}</p>
             <p>{props.priority}</p>
             <button onClick={props.delete}>Delete</button>
+            <button onClick={props.finished}>Complete</button>
         </div>
     )
 }

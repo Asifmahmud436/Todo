@@ -14,3 +14,6 @@
   max-height: 900px;
   border: 1px solid black;
 }
+.task-done{
+  text-decoration: line-through;
+}

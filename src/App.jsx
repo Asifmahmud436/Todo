@@ -13,6 +13,7 @@ function App() {
       id: nanoid(),
       work: task,
       priority: priority,
+      isComplete: false
     };
     setTasks((prev) => [...prev, newTask]);
   }
@@ -21,12 +22,18 @@ function App() {
     setTasks((prev) => prev.filter((item) => item.id != id));
   }
 
+  function markComplete(id){
+    setTasks((prev) => prev.map((item) => item.id==id? {...item,isComplete: !item.isComplete} : item))
+  }
+
   const taskList = tasks.map((task) => (
     <Task
       key={task.id}
       work={task.work}
       priority={task.priority}
+      isComplete={task.isComplete}
       delete={() => deleteTask(task.id)}
+      finished={() => markComplete(task.id)}
     />
   ));
 
