@@ -10,10 +10,17 @@ function App() {
   function addTask(formData) {
     const task = formData.get("task");
     const priority = formData.get("choice");
-    console.log(task);
-    console.log(priority);
+    setTasks((prev) => [...prev, { work: task, priority: priority }]);
+    console.log("tasks: ", tasks);
   }
 
+  const taskList = tasks.map((task) => {
+    <div>
+      <p>{task.work}</p>
+      <p>{task.priority}</p>
+    </div>;
+  });
+  console.log("tasklist: ", taskList);
   return (
     <>
       {/* Form to create a task */}
@@ -35,9 +42,9 @@ function App() {
           <input type="radio" name="choice" value="later" /> Later
         </label>
         <br />
-
         <button>Submit</button>
       </form>
+      <div>{taskList}</div>
     </>
   );
 }
