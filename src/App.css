@@ -7,46 +7,7 @@ body{
   padding: 0;
   border: 0;
 }
-.task {
-  border: 1px solid white;
-  padding: 20px;
-  border-radius: 4px;
-  margin-bottom: 10px;
-}
-.task-red{
-  color: white;
-  background-color: red;
-  width: 100px;
-  padding:  8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-}
-.task-yellow{
-  color: black;
-  background-color: yellow;
-  width: 100px;
-  padding:8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-}
-.task h2{
-  margin-bottom: 60px;
-}
-.task-container{
-  max-width: 1044px;
-  padding-left: 40px;
-  margin: 0 auto;
-  margin-bottom: 30px;
-  display: flex;
-  flex-direction: column;
-}
-.task-done{
-  text-decoration: line-through;
-}
+
 form{
   font-family: "Lato", serif;
 }
@@ -121,5 +82,78 @@ form button{
   font-size: 1.4rem;
 }
 
+.task {
+  border: 1px solid gray;
+  padding: 20px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  max-width: 700px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+.task-red{
+  font-size: .7rem;
+  color: white;
+  background-color: red;
+  width: 50px;
+  padding:  8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+.task-yellow{
+  font-size: .7rem;
+  color: black;
+  background-color: yellow;
+  width: 50px;
+  padding:8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+.task h2{
+  margin-bottom: 20px;
+}
+.task-container{
+  max-width: 1044px;
+  padding-left: 40px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+}
+.task-done{
+  text-decoration: line-through;
+}
+.task-btn{
+  display: flex;
+  flex-direction: column;
+  gap:12px;
+  /* align-items: start; */
+  /* justify-content: baseline; */
+}
 
+.task-btn button{
+  /* margin-bottom: 20px; */
+  /* font-size: 1.3rem; */
+  padding: 10px 18px;
+  margin-top: 5px;
+  color: white;
+  background-color: blue;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+}
 
+.task-btn .complete{
+  background-color: lawngreen;
+  color: black;
+}
+.task-btn .delete{
+  background-color: #EF233C;
+  color: white;
+}
