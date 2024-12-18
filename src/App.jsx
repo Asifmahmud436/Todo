@@ -22,10 +22,16 @@ function App() {
 
   function deleteTask(id) {
     setTasks((prev) => prev.filter((item) => item.id != id));
+    setSearchedTask((prev) => prev.filter((item) => item.id != id));
   }
 
   function markComplete(id) {
     setTasks((prev) =>
+      prev.map((item) =>
+        item.id == id ? { ...item, isComplete: !item.isComplete } : item
+      )
+    );
+    searchedTaskList((prev) =>
       prev.map((item) =>
         item.id == id ? { ...item, isComplete: !item.isComplete } : item
       )
@@ -49,9 +55,16 @@ function App() {
   ));
 
   const searchedTaskList = searchedTask.map((task) => (
-    <div key={nanoid()}>
-      <p>{task.work}</p>
-      <p>{task.priority}</p>
+    
+    <div key={nanoid()} className="task">
+      <div>
+          <h2 className={task.isComplete ? 'task-done':''}>{task.work}</h2>
+          <p className={task.priority=='important' ? 'task-red':'task-yellow'}>{task.priority}</p>
+      </div>
+      <div className="task-btn">
+          <button className="delete" onClick={() => deleteTask(task.id)}>Delete</button>
+          <button className="complete" onClick={() => markComplete(task.id)}>Complete</button>
+      </div>
     </div>
   ));
   
