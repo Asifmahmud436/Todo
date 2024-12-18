@@ -80,6 +80,7 @@ form button{
 .search-container button{
   padding: 2px 8px;
   font-size: 1.4rem;
+  margin-right: 10px;
 }
 
 .task {

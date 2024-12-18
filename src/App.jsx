@@ -79,10 +79,13 @@ function App() {
   
   return (
     <>
+      {/* header section */}
       <div className="header">
         <h1>Hello, Soldier! </h1>
         <h3>Manage your daily Tasks</h3>
       </div>
+
+      {/* task form */}
       <form action={addTask}>
         <textarea name="task" id="task" rows='5' cols='54' placeholder="Praying Salah"></textarea>
         <br />
@@ -95,6 +98,7 @@ function App() {
         <button>Add</button>
       </form>
       
+      {/* search section */}
       <div className="search-container">
         <input
           type='text'
@@ -103,9 +107,11 @@ function App() {
           placeholder="Search your tasks..."
         />
         <button onClick={sortTask}>Sort by Importance</button>
+        <br />
         {searchedTaskList.length > 0 && <button onClick={clearSearch}>Clear Search</button>}
       </div>
       
+      {/* display the search items  */}
       {searchedTaskList.length > 0 ?
         <div className="task-container">{searchedTaskList}</div> :
         <div className="task-container">{taskList}</div> 
