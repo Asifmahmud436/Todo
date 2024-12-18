@@ -21,14 +21,13 @@ button{
 .header{
   max-width: 1044px;
   padding-left: 40px;
-  margin: 0 auto;
-  margin-bottom: 30px;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   
 }
-.header h1{
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
+
 form{
   max-width: 1044px;
   padding-left: 40px;
@@ -157,4 +156,10 @@ form button{
 .task-btn .delete{
   background-color: #EF233C;
   color: white;
+}
+
+.clock{
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
 }

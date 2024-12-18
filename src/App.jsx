@@ -1,12 +1,21 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import "./App.css";
 import { nanoid } from "nanoid";
 import Task from "./Task";
 
 function App() {
   const [tasks, setTasks] = useState([]);
+  const [date,setDate] = useState(new Date())
   const [searchedTask,setSearchedTask] = useState([])
-
+  
+  useEffect(()=>{
+    const intervalId = setInterval(() => {
+      setDate(new Date())
+    }, 1000)
+    return () => clearInterval(intervalId);
+  },[])
+  
+  
   function addTask(formData) {
     let task = formData.get("task");
     let priority = formData.get("choice");
@@ -81,8 +90,13 @@ function App() {
     <>
       {/* header section */}
       <div className="header">
-        <h1>Hello, Soldier! </h1>
-        <h3>Manage your daily Tasks</h3>
+        <div>
+          <h1>Hello, Soldier! </h1>
+          <h3>Manage your daily Tasks</h3>
+        </div>
+        <h4 className="clock">
+            {date.toLocaleTimeString()}
+        </h4>
       </div>
 
       {/* task form */}
