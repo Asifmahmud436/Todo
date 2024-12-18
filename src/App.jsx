@@ -31,7 +31,7 @@ function App() {
         item.id == id ? { ...item, isComplete: !item.isComplete } : item
       )
     );
-    searchedTaskList((prev) =>
+    setSearchedTask((prev) =>
       prev.map((item) =>
         item.id == id ? { ...item, isComplete: !item.isComplete } : item
       )
@@ -55,17 +55,14 @@ function App() {
   ));
 
   const searchedTaskList = searchedTask.map((task) => (
-    
-    <div key={nanoid()} className="task">
-      <div>
-          <h2 className={task.isComplete ? 'task-done':''}>{task.work}</h2>
-          <p className={task.priority=='important' ? 'task-red':'task-yellow'}>{task.priority}</p>
-      </div>
-      <div className="task-btn">
-          <button className="delete" onClick={() => deleteTask(task.id)}>Delete</button>
-          <button className="complete" onClick={() => markComplete(task.id)}>Complete</button>
-      </div>
-    </div>
+    <Task
+      key={task.id}
+      work={task.work}
+      priority={task.priority}
+      isComplete={task.isComplete}
+      delete={() => deleteTask(task.id)}
+      finished={() => markComplete(task.id)}
+    />
   ));
   
 
@@ -87,17 +84,9 @@ function App() {
         <h3>Manage your daily Tasks</h3>
       </div>
       <form action={addTask}>
-        <label htmlFor="text"> </label>
-        {/* <input
-          id="task"
-          type="text"
-          name="task"
-          placeholder="Add a task for your day"
-          defaultValue="Game"
-        /> */}
-        <textarea name="task" id="task" defaultValue='Game' rows='5' cols='54'></textarea>
+        <textarea name="task" id="task" rows='5' cols='54' placeholder="Praying Salah"></textarea>
         <br />
-        <input type="radio" name="choice" value="important" />
+        <input type="radio" name="choice" value="important" required/>
         <label className="radio-btn">
            Important
         </label >
