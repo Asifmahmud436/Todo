@@ -84,30 +84,25 @@ function App() {
         /> */}
         <textarea name="task" id="task" defaultValue='Game' rows='5' cols='54'></textarea>
         <br />
-        
         <input type="radio" name="choice" value="important" />
         <label className="radio-btn">
            Important
         </label >
         <input type="radio" name="choice" value="later" />
         <label className="radio-btn" htmlFor="later" id="later">Later</label>
-        
-        
-        <br />
         <button>Add</button>
       </form>
       
-      <label>
-        Search: 
+      <div className="search-container">
         <input
           type='text'
           name='searchBar'
           onChange={handleSearch}
+          placeholder="Search your tasks..."
         />
-      </label>
-      <br/>
-      <button onClick={sortTask}>Sort by importance</button>
-      {searchedTaskList.length > 0 && <button onClick={clearSearch}>Clear Search</button>}
+        <button onClick={sortTask}>Sort by Importance</button>
+        {searchedTaskList.length > 0 && <button onClick={clearSearch}>Clear Search</button>}
+      </div>
       
       {searchedTaskList.length > 0 ?
         <div className="task-container">{searchedTaskList}</div> :
